@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import api from '../../services/api';
 import './styles.css';
+import {Link} from 'react-router-dom';
 
 export default class Product extends Component{
     
@@ -15,20 +16,30 @@ export default class Product extends Component{
 
         this.setState({product: response.data});
     }
-
+ 
+    back = () => {
+ 
+    }
     render(){
 
         const {product } = this.state;
 
         return (
-            <div className="product-info">
-                <h1>{product.title}</h1>
-                <h1>{product.description}</h1>
+            <div>
+                <div className="product-info">
+                    <h1>{product.title}</h1>
+                    <h1>{product.description}</h1>
 
-                <p>
-                    URL: <a hef={product.url}>{product.url}</a>
-                </p>
+                    <p>
+                        URL: <a hef={product.url}>{product.url}</a>
+                    </p>
+                </div>  
+                <div className="actions">
+                    <Link to={`/`}>Voltar</Link>
+                </div>
             </div>
+              
+            
         );
     }
 }
